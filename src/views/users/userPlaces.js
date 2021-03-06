@@ -115,7 +115,7 @@ const UserPlaces = ({match}) => {
         <CDataTable
           items={userPlace}
           fields={[
-            { key:'title', _classes: 'font-weight-bold' },
+            { key:'place_id', _classes: 'font-weight-bold' },
             'start_date','end_date',{
               key: 'show_details',
               label: '',
@@ -141,19 +141,19 @@ const UserPlaces = ({match}) => {
           }}
           scopedSlots = {
             {
-            'title':
-              (item)=>{
-                let i=placeTitle.length;
-                 if(counter===i){
-                title(item.place_id,i)
-                  }                // counter=0;
-                return(
-                <td>
-                  {/* <CBadge color={getBadge(isHost(item) ?'Active':'Banned')}> */}
-                    {placeTitle.length>0?placeTitle:'batee5'}
-                 {/* </CBadge>  */}
-               </td>
-              )},
+            // 'title':
+            //   (item)=>{
+            //     let i=placeTitle.length;
+            //      if(counter===i){
+            //     title(item.place_id,i)
+            //       }                // counter=0;
+            //     return(
+            //     <td>
+            //       {/* <CBadge color={getBadge(isHost(item) ?'Active':'Banned')}> */}
+            //         {placeTitle.length>0?placeTitle:'batee5'}
+            //      {/* </CBadge>  */}
+            //    </td>
+            //   )},
               'show_details':
               (item, index)=>{
                 return (
@@ -165,9 +165,9 @@ const UserPlaces = ({match}) => {
                       size="sm"
                       onClick={(e)=>{
                             console.log(item.place_id);
-                        axiosInstance.delete(`/places/delete/${item.place_id}`)
+                        axiosInstance.delete(`/hosting/deletePlace/admin/${item.place_id}`)
                         .then(function(response){
-                          // history.go(0);
+                          history.go(0);
                           console.log(response);
                         })
                         .catch(function(err){

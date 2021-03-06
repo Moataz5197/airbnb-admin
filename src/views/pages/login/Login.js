@@ -44,7 +44,7 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm method='get' action='' style={{display:'flex', justifyContent:'center',textAlign:'center' ,flexFlow:'wrap column'}} onSubmit={logMeIn}  >
+                  <CForm style={{display:'flex', justifyContent:'center',textAlign:'center' ,flexFlow:'wrap column'}} >
                     <h1>Login</h1>
                     <p className="text-muted">Sign In to your account</p>
                     <CInputGroup className="mb-3">
@@ -66,7 +66,9 @@ const Login = () => {
                     <CRow>
                       {/* <CCol xs='4'></CCol> */}
                       <CCol style={{display:'flex', justifyContent:'center'}} xs="12">
-                        <CButton color="primary" className="px-4" type='submit'>Login</CButton>
+                        <CButton color="primary" className="px-4" onClick={
+                          logMeIn
+                        }>Login</CButton>
                       </CCol>
                       {/* <CCol xs="6" className="text-right">
                         <CButton color="link" className="px-0">Forgot password?</CButton>
