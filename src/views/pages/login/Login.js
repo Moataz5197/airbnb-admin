@@ -1,5 +1,5 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import {
   CButton,
   CCard,
@@ -17,6 +17,25 @@ import {
 import CIcon from '@coreui/icons-react'
 
 const Login = () => {
+  const history=useHistory();
+  const [formData, setFormData]=React.useState({userName:'',password:''});
+
+  const handleForm=(e)=>{
+    setFormData({
+        ...formData,
+        [e.target.name]:e.target.value
+    })
+      
+}
+  const logMeIn=()=>{
+    if(formData.userName==='airbnbAdmin' && formData.password==='admin'){
+      history.push('/dashboard')
+    }
+    else{
+      history.push('/login')
+    }
+  }
+
   return (
     <div className="c-app c-default-layout flex-row align-items-center">
       <CContainer>
@@ -25,7 +44,7 @@ const Login = () => {
             <CCardGroup>
               <CCard className="p-4">
                 <CCardBody>
-                  <CForm>
+                  <CForm method='get' action='' style={{display:'flex', justifyContent:'center',textAlign:'center' ,flexFlow:'wrap column'}} onSubmit={logMeIn}  >
                     <h1>Login</h1>
                     <p className="text-muted">Sign In to your account</p>
                     <CInputGroup className="mb-3">
@@ -34,7 +53,7 @@ const Login = () => {
                           <CIcon name="cil-user" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="text" placeholder="Username" autoComplete="username" />
+                      <CInput type="text" placeholder="Username"  name='userName' onChange={handleForm} />
                     </CInputGroup>
                     <CInputGroup className="mb-4">
                       <CInputGroupPrepend>
@@ -42,20 +61,21 @@ const Login = () => {
                           <CIcon name="cil-lock-locked" />
                         </CInputGroupText>
                       </CInputGroupPrepend>
-                      <CInput type="password" placeholder="Password" autoComplete="current-password" />
+                      <CInput type="password" placeholder="Password"  name='password'  onChange={handleForm} />
                     </CInputGroup>
                     <CRow>
-                      <CCol xs="6">
-                        <CButton color="primary" className="px-4">Login</CButton>
+                      {/* <CCol xs='4'></CCol> */}
+                      <CCol style={{display:'flex', justifyContent:'center'}} xs="12">
+                        <CButton color="primary" className="px-4" type='submit'>Login</CButton>
                       </CCol>
-                      <CCol xs="6" className="text-right">
+                      {/* <CCol xs="6" className="text-right">
                         <CButton color="link" className="px-0">Forgot password?</CButton>
-                      </CCol>
+                      </CCol> */}
                     </CRow>
                   </CForm>
                 </CCardBody>
               </CCard>
-              <CCard className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
+              {/* <CCard className="text-white bg-primary py-5 d-md-down-none" style={{ width: '44%' }}>
                 <CCardBody className="text-center">
                   <div>
                     <h2>Sign up</h2>
@@ -66,7 +86,7 @@ const Login = () => {
                     </Link>
                   </div>
                 </CCardBody>
-              </CCard>
+              </CCard> */}
             </CCardGroup>
           </CCol>
         </CRow>

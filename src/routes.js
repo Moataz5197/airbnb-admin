@@ -37,14 +37,19 @@ const Typography = React.lazy(() => import('./views/theme/typography/Typography'
 const Widgets = React.lazy(() => import('./views/widgets/Widgets'));
 const Users = React.lazy(() => import('./views/users/Users'));
 const User = React.lazy(() => import('./views/users/User'));
-const UserPlaces = React.lazy(() => import('./views/users/places'));
+const UserPlaces = React.lazy(() => import('./views/users/userPlaces'));
+const ReservationsForUser = React.lazy(() => import('./views/users/reservationsForUser'));
+
 const Places = React.lazy(() => import('./views/places/places'));
+const Reservations = React.lazy(() => import('./views/reservations/reservations'));
+const Reservation = React.lazy(() => import('./views/reservations/reservation'));
+
 const Place = React.lazy(() => import('./views/places/place'));
 
 
 const routes = [
   { path: '/', exact: true, name: 'Home' },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/dashboard', name: 'Dashboard', component: Dashboard, exact: true},
   { path: '/theme', name: 'Theme', component: Colors, exact: true },
   { path: '/theme/colors', name: 'Colors', component: Colors },
   { path: '/theme/typography', name: 'Typography', component: Typography },
@@ -86,8 +91,13 @@ const routes = [
   { path: '/places/:id', exact: true, name: 'Place Details', component: Place },
 
   { path: '/users/:id/places', exact: true,  name: 'userPlaces', component: UserPlaces },
+  { path: '/users/:id/placesReserved', exact: true,  name: 'userReservedPlaces', component: ReservationsForUser },
 
-  { path: '/users/:id', exact: true, name: 'User Details', component: User }
+  { path: '/users/:id', exact: true, name: 'User Details', component: User },
+
+  { path: '/reservations', exact: true,  name: 'Reservations', component: Reservations },
+  { path: '/Reservations/:id', exact: true, name: 'Reservation Details', component: Reservation }
+
 ];
 
 export default routes;
