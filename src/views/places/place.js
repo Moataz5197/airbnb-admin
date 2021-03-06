@@ -87,9 +87,13 @@ const renderMe=()=>{
     <div>
     <CRow>
       <CCol sm={12}>
+   {place.length!==0&&place.images.other_imgs&&
         <CCarousel activeIndex={activeIndex} >
           <CCarouselIndicators/>
+
+          
           <CCarouselInner>
+
             <CCarouselItem>
               <img  className="d-block w-100" src={place&&place.length!==0?place.images.main_img:''} alt="slide 1"/>
               <CCarouselCaption ><h3>Main Image</h3></CCarouselCaption>
@@ -131,12 +135,12 @@ const renderMe=()=>{
               <img className="d-block w-100" src={place.length!==0?place.images.other_imgs[3]&&place.images.other_imgs[3]:''} alt="slide 5"/>
               <CCarouselCaption><h3>Slide 5</h3></CCarouselCaption>
             </CCarouselItem> */}
-            {place.length!==0&&place.images.other_imgs[4]&&
+            {/* {place.length!==0&&place.images.other_imgs[4]&& */}
              <CCarouselItem>
              <img className="d-block w-100" src={place.length!==0?place.images.other_imgs[4]&&place.images.other_imgs[4]:''} alt="slide 6"/>
              <CCarouselCaption><h3>Slide 6</h3></CCarouselCaption>
            </CCarouselItem>
-          }
+          {/* } */}
            
            {/* <CCarouselItem>
               <img className="d-block w-100" src={place.length!==0?place.images.other_imgs[2]:''} alt="slide 3"/>
@@ -146,6 +150,7 @@ const renderMe=()=>{
           <CCarouselControl direction="prev"/>
           <CCarouselControl direction="next"/>
         </CCarousel>
+}
       </CCol>
     </CRow>
     {/* {activeRender()} */}
