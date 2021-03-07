@@ -20,8 +20,9 @@ const [reservedMonths,setReservedMonths] = useState([])
 
 
 useEffect(()=>{
-  axiosInstance.get("/reservations")
+  axiosInstance.get("/reservations/")
   .then((reservations)=>{
+    console.log(reservations.data)
     const resDates = reservations.data.map((ele)=>{
       let date = new Date(ele.start_date) .getDay()
       let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
